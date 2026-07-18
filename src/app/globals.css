@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Core palette — pulled from the kitchen, not a template */
+  --espresso: #1f140f;      /* deep charcoal-brown, cast iron pot */
+  --espresso-light: #2c1d15;
+  --ivory: #fbf1de;         /* warm parchment, card surfaces */
+  --ivory-dim: #f0e3c8;
+  --brick: #b23a2e;         /* palm-oil red, primary accent */
+  --brick-dark: #8f2d23;
+  --gold: #d4a017;          /* kente gold, secondary accent */
+  --herb: #3f6c51;          /* plantain-leaf green, tertiary accent */
+  --ink: #2b1810;           /* body text on light surfaces */
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Public Sans', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--ivory);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Receipt-style dot leaders — the signature element */
+.receipt-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.receipt-line .leader {
+  flex: 1;
+  border-bottom: 1px dotted rgba(43, 24, 16, 0.35);
+  margin-bottom: 0.3em;
+  min-width: 1rem;
+}
+
+/* Visible keyboard focus, everywhere */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--brick);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
