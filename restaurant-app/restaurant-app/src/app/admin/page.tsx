@@ -38,37 +38,55 @@ export default function AdminDashboard() {
   }
 
   return (
-    <main className="min-h-screen bg-neutral-50 p-6 text-neutral-900">
-      <h1 className="mb-6 text-xl font-semibold">Admin Dashboard</h1>
-      <div className="flex h-[600px] max-w-2xl flex-col rounded-lg border border-neutral-200 bg-white">
-        <div className="border-b border-neutral-200 px-4 py-3 font-medium">Operations Assistant</div>
-        <div className="flex-1 space-y-3 overflow-y-auto p-4">
-          {messages.map((m, i) => (
-            <div
-              key={i}
-              className={`max-w-[85%] whitespace-pre-wrap rounded-lg px-3 py-2 text-sm ${
-                m.sender === "user" ? "ml-auto bg-neutral-900 text-white" : "bg-neutral-100"
-              }`}
-            >
-              {m.content}
-            </div>
-          ))}
-        </div>
-        <div className="flex gap-2 border-t border-neutral-200 p-3">
-          <input
-            className="flex-1 rounded border border-neutral-300 px-3 py-2 text-sm"
-            placeholder="e.g. What should I reorder this week?"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-          />
-          <button
-            onClick={sendMessage}
-            disabled={sending}
-            className="rounded bg-neutral-900 px-4 py-2 text-sm text-white disabled:opacity-50"
+    <main className="min-h-screen px-6 py-10" style={{ background: "var(--espresso)" }}>
+      <div className="mx-auto max-w-2xl">
+        <span className="font-mono text-xs uppercase tracking-[0.2em]" style={{ color: "var(--gold)" }}>
+          Back of house
+        </span>
+        <h1 className="font-display mt-2 mb-6 text-3xl" style={{ color: "var(--ivory)" }}>
+          Operations dashboard
+        </h1>
+
+        <div className="flex h-[560px] flex-col rounded-lg border" style={{ borderColor: "rgba(251,241,222,0.15)", background: "var(--ivory)" }}>
+          <div
+            className="border-b px-4 py-3 font-display text-sm"
+            style={{ borderColor: "rgba(43,24,16,0.1)", color: "var(--espresso)" }}
           >
-            Send
-          </button>
+            Operations assistant
+          </div>
+          <div className="flex-1 space-y-3 overflow-y-auto p-4">
+            {messages.map((m, i) => (
+              <div
+                key={i}
+                className="max-w-[85%] whitespace-pre-wrap rounded-lg px-3 py-2 text-sm"
+                style={
+                  m.sender === "user"
+                    ? { marginLeft: "auto", background: "var(--brick)", color: "var(--ivory)" }
+                    : { background: "var(--ivory-dim)", color: "var(--ink)" }
+                }
+              >
+                {m.content}
+              </div>
+            ))}
+          </div>
+          <div className="flex gap-2 border-t p-3" style={{ borderColor: "rgba(43,24,16,0.1)" }}>
+            <input
+              className="flex-1 rounded border px-3 py-2 text-sm"
+              style={{ borderColor: "rgba(43,24,16,0.2)" }}
+              placeholder="e.g. What should I reorder this week?"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+            />
+            <button
+              onClick={sendMessage}
+              disabled={sending}
+              className="rounded-full px-4 py-2 text-sm font-medium disabled:opacity-50"
+              style={{ background: "var(--gold)", color: "var(--espresso)" }}
+            >
+              Ask
+            </button>
+          </div>
         </div>
       </div>
     </main>
